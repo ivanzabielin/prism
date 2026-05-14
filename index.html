@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>PRISM</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="overlay">
+  <div id="menu" class="panel">
+    <h1>PRISM</h1>
+    <div class="sub">REFRACT  ·  SURVIVE  ·  ASCEND</div>
+    <div class="lead">
+      You are a prism. Enemies arrive in three colors.<br/>
+      Match your beam to their hue — anything else <i>refracts off</i>.<br/>
+      Choose a vessel. Hold the line. Climb the wave count.
+    </div>
+    <div class="color-legend">
+      <span><span class="dot r"></span>RED</span>
+      <span><span class="dot g"></span>GREEN</span>
+      <span><span class="dot b"></span>BLUE</span>
+      <span><span class="dot w"></span>PRISMATIC</span>
+    </div>
+    <div class="keys">
+      <b>WASD / Arrows</b><span>Move</span>
+      <b>Mouse</b><span>Aim</span>
+      <b>Left Click</b><span>Fire</span>
+      <b>Right Click / R</b><span>Overload (when charged)</span>
+      <b>1 / 2 / 3</b><span>Switch beam (R / G / B)</span>
+      <b>Q / E / Wheel</b><span>Cycle beam</span>
+      <b>Space / Shift</b><span>Dash (i-frames)</span>
+      <b>P / Esc</b><span>Pause</span>
+      <b>M</b><span>Mute</span>
+    </div>
+    <div class="btnrow">
+      <button id="startBtn">BEGIN</button>
+      <button id="achBtn" class="ghost">MEDALS</button>
+    </div>
+    <div class="settings">
+      <label>VOL <input id="vol" type="range" min="0" max="100" /></label>
+      <label><input id="mute" type="checkbox" /> MUTE</label>
+      <label><input id="music" type="checkbox" /> MUSIC</label>
+      <label><input id="bloom" type="checkbox" /> BLOOM</label>
+      <label><input id="cb" type="checkbox" /> COLOR-BLIND</label>
+    </div>
+    <div class="tip">tip — overload destroys any-color enemies and bullets in a radius</div>
+  </div>
+
+  <div id="deathScreen" class="panel hidden death">
+    <h1 style="font-size:48px;letter-spacing:10px;">SHATTERED</h1>
+    <div class="breakdown">
+      <div><span>SCORE</span><b id="bdScore">0</b></div>
+      <div><span>WAVE</span><b id="bdWave">0</b></div>
+      <div><span>KILLS</span><b id="bdKills">0</b></div>
+      <div><span>BEST COMBO</span><b id="bdCombo">×0</b></div>
+      <div><span>ACCURACY</span><b id="bdAcc">0%</b></div>
+      <div><span>TIME</span><b id="bdTime">0:00</b></div>
+      <div><span>BOSSES</span><b id="bdBoss">0</b></div>
+      <div><span>VESSEL</span><b id="bdShip">—</b></div>
+    </div>
+    <div id="bdAchievements" class="ach-block"></div>
+    <div class="stat" id="bestScore">ALL-TIME BEST 0  ·  WAVE 0</div>
+    <div class="btnrow">
+      <button id="restartBtn">REFRACT AGAIN</button>
+      <button id="menuFromDeath" class="ghost">MENU</button>
+    </div>
+  </div>
+
+  <div id="pauseScreen" class="panel hidden">
+    <h1 style="font-size:48px;letter-spacing:10px;">PAUSED</h1>
+    <div class="sub">PRESS P TO RESUME</div>
+    <div class="btnrow">
+      <button id="resumeBtn">RESUME</button>
+      <button id="menuFromPause" class="ghost">ABANDON RUN</button>
+    </div>
+  </div>
+
+  <div id="achPanel" class="panel hidden ach-panel">
+    <h1 style="font-size:40px;letter-spacing:8px;">MEDALS</h1>
+    <div class="sub">PERSISTENT RECORDS</div>
+    <div id="achList" class="ach-list"></div>
+    <button id="achClose">CLOSE</button>
+  </div>
+</div>
+
+<!-- order: core -> data -> entities -> systems -> game -> main -->
+<script src="src/core/utils.js"></script>
+<script src="src/core/colors.js"></script>
+<script src="src/core/state.js"></script>
+<script src="src/core/audio.js"></script>
+<script src="src/core/input.js"></script>
+
+<script src="src/data/enemyTypes.js"></script>
+<script src="src/data/upgradeDefs.js"></script>
+<script src="src/data/ships.js"></script>
+<script src="src/data/bosses.js"></script>
+
+<script src="src/entities/particle.js"></script>
+<script src="src/entities/effects.js"></script>
+<script src="src/entities/bullet.js"></script>
+<script src="src/entities/pickup.js"></script>
+<script src="src/entities/enemy.js"></script>
+<script src="src/entities/player.js"></script>
+
+<script src="src/systems/scenes.js"></script>
+<script src="src/systems/hud.js"></script>
+<script src="src/systems/upgrades.js"></script>
+<script src="src/systems/achievements.js"></script>
+<script src="src/systems/loadout.js"></script>
+<script src="src/systems/postfx.js"></script>
+<script src="src/systems/music.js"></script>
+<script src="src/systems/render.js"></script>
+<script src="src/systems/waves.js"></script>
+
+<script src="src/core/game.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
